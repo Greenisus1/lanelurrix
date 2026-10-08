@@ -27,9 +27,14 @@ def run(stdscr,seed):
         h,w=stdscr.getmaxyx()
         if h<19 or w<46:text(stdscr,4,2,'Resize to at least 46x19. Game paused.',3);last=time.monotonic()
         else:
+            left=(w-42)//2
+            text(stdscr,3,left,'HOME: reach the top row',4)
             for y in range(12):
-                text(stdscr,4+y,2,''.join(' @' if (x,y)==(g.x,g.y) else '##' if g.occupied(x,y) else '..' if y in g.lanes else '  ' for x in range(20)),3 if y in g.lanes else 4)
-            text(stdscr,3,2,'HOME: reach the top row',4);text(stdscr,16,2,'Traffic shifts every 0.35 seconds.',2)
+                text(stdscr,4+y,left,'|',1);text(stdscr,4+y,left+41,'|',1)
+                for x in range(20):
+                    player=(x,y)==(g.x,g.y)
+                    text(stdscr,4+y,left+1+x*2,' @' if player else '##' if g.occupied(x,y) else '..' if y in g.lanes else '  ',4 if player else 3 if y in g.lanes else 1,player)
+            text(stdscr,16,left,'Traffic shifts every 0.35 seconds.',2)
             if not paused and time.monotonic()-last>=.35:g.tick();last=time.monotonic()
         stdscr.refresh();k=stdscr.getch()
         if k in (ord('q'),ord('Q')):return

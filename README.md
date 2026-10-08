@@ -1,6 +1,6 @@
 # Lanelurrix
 
-Offline terminal moving-lane crossing game. Version 1.0.0. Original terminal artwork; no account, desktop or telemetry. No assets or names taken from other games.
+Offline terminal moving-lane crossing game. Version 1.0.1. Original terminal artwork; no account, desktop or telemetry. No assets or names taken from other games.
 
 ## Install and run
 
@@ -20,3 +20,5 @@ For tests:
     python3 -m unittest -v
 
 7 core tests plus actual Linux PTY visual/input smoke. Linux tested; physical Raspberry Pi and non-Linux untested. Without curses the interactive game is unavailable. No paid features. games category marker line3; older stores still list/launch it. MIT license; see LICENSE.txt.
+
+1.0.1: framed centered lanes and distinct green player, including on hazard rows. Core rules unchanged.

@@ -1,24 +1,17 @@
-# Lanelurrix
+# Lanelurrix1.1.0
 
-Offline terminal moving-lane crossing game. Version 1.0.1. Original terminal artwork; no account, desktop or telemetry. No assets or names taken from other games.
+Original offline fullscreen terminal lane-crossing game. No branded assets, accounts, desktop, network or telemetry. Same listing, upgraded from1.0.1.
 
-## Install and run
+Choose Levels or Infinity at launch. Levels has10 crossings, gradually faster/denser traffic, safe resting rows and a HOME finish. Enter advances after each win; R retries the current level. Infinity generates deterministic new lanes as you move forward, scrolls the view, keeps a session row record and gradually speeds traffic up. No end in Infinity, no saved scores.
+
+The original20-cell lane logic now expands cells/row height across your terminal. Colored road/grass/traffic, wheel details and a small original player sprite at roomy sizes; compact @ at small sizes. Arrows/WASD move, P/Space pause, R retry, M mode menu, Esc/Q exit. Minimum46x19. Shrinking pauses and preserves state; enlarging resumes with resized drawing. Status and controls stay on screen. Physics is the same20-column grid regardless of screen size, not more columns on wider screens.
 
     bash app-store.sh install
     bash app-store.sh run
-
-Python3 with curses (normally included on Linux). No downloaded dependencies.
-
-Arrows/WASD move, P pause, R restart, Q quit. Reach the top HOME row without touching traffic. Safe resting rows are 0,4,8,11. Traffic ticks every 0.35 seconds; original fixed-width lanes repeat every 7 columns. No endless scrolling, coins, score saving or levels.
-
-Interactive curses terminal at least 46x19. Too-small windows show a resize notice and retain/pause the game. Terminal default, no GUI and no desktop requirement. R with --seed restarts the same seeded sequence, otherwise a fresh random board. For a non-interactive snapshot, use:
-
     python3 lanelurrix.py --seed 42 --demo
-
-For tests:
-
+    python3 lanelurrix.py --version
     python3 -m unittest -v
 
-7 core tests plus actual Linux PTY visual/input smoke. Linux tested; physical Raspberry Pi and non-Linux untested. Without curses the interactive game is unavailable. No paid features. games category marker line3; older stores still list/launch it. MIT license; see LICENSE.txt.
+Python3+curses, no downloaded dependencies. Install only compiles source, no sudo. Noninteractive terminals get a clear error; --demo keeps the old fixed snapshot feature. Seeded retries preserve the current level seed. Infinity caches only nearby lanes, not an ever-growing map. Session progress disappears on exit.
 
-1.0.1: framed centered lanes and distinct green player, including on hazard rows. Core rules unchanged.
+15 core/regression tests, actual Linux PTY level/infinity input, resize and terminal-restoration checked. Fullscreen visual previews inspected. Physical Raspberry Pi and non-Linux untested. Original terminal artwork, not Crossy Road or a commercial-game port. Games marker line3; older stores still list and launch it. MIT license; existing LICENSE.txt unchanged.
